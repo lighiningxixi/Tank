@@ -1,6 +1,7 @@
-package ck;
+package com.sxt;
 
-public enum Direction {
-	UP,LEFT,RIGHT,DOWN
+public class Direction {
+
+	public static final Direction UP = null;
 
 }

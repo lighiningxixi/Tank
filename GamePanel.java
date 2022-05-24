@@ -1,4 +1,5 @@
-package ck;
+package com.sxt;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -8,122 +9,120 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.*;
+
 public class GamePanel extends JFrame {
+	Image offScreenImage = null;
+
+    /**
+	 * 
+	 */
+	 static final long serialVersionUID = -9031056538267314846L;
 	
-	int width = 800;
+    int width = 800;
     int height = 610;
-    //Ë«»º³åÍ¼Æ¬
-    Image offScreenImage = null;
-    //Í¼Æ¬
-    private Image select = Toolkit.getDefaultToolkit().getImage("D:\\Java\\workspace\\tankwar\\bin\\images/selecttank.gif");
-    //Ö¸Õë³õÊ¼×ø±ê
-    private int y = 150;
-    //ÓÎÏ·Ä£Ê½
+     PlayerOne playerOne = new PlayerOne("images/player1/p1tankU.gif", 125, 510,
+            "images/player1/p1tankU.gif","images/player1/p1tankD.gif",
+            "images/player1/p1tankL.gif","images/player1/p1tankR.gif", this);
+    Image select = Toolkit.getDefaultToolkit().getImage("D:\\BaiduNetdiskDownload\\tank\\tank\\images\\images\\selecttank.gif");
+    
+    int y = 150;
+    
     int state = 0;
     int a = 1;
-    PlayerOne playerOne = new PlayerOne("D:\\\\Java\\\\workspace\\\\tankwar\\\\bin\\\\images/player1/p1tankU.gif", 125, 510,
-            "D:\\\\Java\\\\workspace\\\\tankwar\\\\bin\\\\images/player1/p1tankU.gif","images/player1/p1tankD.gif",
-            "D:\\\\Java\\\\workspace\\\\tankwar\\\\bin\\\\images/player1/p1tankL.gif","images/player1/p1tankR.gif",this);
-	public boolean start;
     
-    //´°¿ÚÆô¶¯·½·¨
-    public void launch(){                 
-    	setTitle("Õ½ÕùÈ¼Æğ");
-    	setSize(width, height);
-    	//´°¿Ú¾ÓÖĞ
-    	setLocationRelativeTo(null);
-    	//Ìí¼Ó¹Ø±ÕÊÂ¼ş
-    	setDefaultCloseOperation(3);
-    	//ÓÃ»§²»ÄÜµ÷½Ú´óĞ¡
-    	setResizable(false);
-    	//´°¿Ú¿É¼û
-    	setVisible(true);
-    	//Ìí¼Ó¼üÅÌ¼àÊÓÆ÷
-    	this.addKeyListener(new GamePanel.KeyMonitor());
-    	while (true){
+    public void launch(){
+       
+        setTitle("å¦å…‹å¤§æˆ˜");
+        
+        setSize(width, height);
+       
+        setLocationRelativeTo(null);
+       
+        setDefaultCloseOperation(3);
+        
+        setResizable(false);
+        
+        setVisible(true);
+        
+        this.addKeyListener(new GamePanel.KeyMonitor());
+        
+        while (true){
             repaint();
             try {
-                Thread.sleep(25);
+                
+                Thread.sleep(100);
             }catch (Exception e){
                 e.printStackTrace();
             }
-        }
-
+        } 
     }
-    
-    
-    
-  //paint·½·¨
     @Override
-    public void paint(Graphics g) {      
-    	if(offScreenImage ==null){
+    public void paint(Graphics g) {
+    	
+    	Image offScreenImage = null;
+		if(offScreenImage ==null){
             offScreenImage=this.createImage(width, height);
-        }//¿Õ°×Í¼Æ¬
-    	Graphics gImage= offScreenImage.getGraphics();
-    	//»­±ÊÑÕÉ«
-        //»­±ÊÑÕÉ«
-    	gImage.setColor(Color.PINK);
-        //ÊµĞÄ¾ØĞÎ
-    	gImage.fillRect(0, 0, width, height);
-    	gImage.setColor(Color.white);
-        if(state == 0) {
-        gImage.setFont(new Font("ËÎÌå",Font.BOLD,50));
-        gImage.drawString("Ñ¡ÔñÓÎÏ·Ä£Ê½",220,100);
-        gImage.drawString("µ¥ÈËÄ£Ê½",220,200);
-        gImage.drawString("Ë«ÈËÄ£Ê½",220,300);
-        //»æÖÆÖ¸Õë
-        gImage.drawImage(select,160,y,null);
-    }
-    else if(state == 1||state == 2){      
-    	gImage.drawString("ÓÎÏ·¿ªÊ¼",220,300);
-        if(state == 1){
-        	gImage.drawString("µ¥ÈËÄ£Ê½",220,200);
-        }
-        else{
-        	gImage.drawString("Ë«ÈËÄ£Ê½",220,200);
-        }
-        //Ìí¼ÓÓÎÏ·ÔªËØ
-        playerOne.paintSelf(gImage);
-    }
-        g.drawImage(offScreenImage, 0, 0, null);
-}
-//¼üÅÌ¼àÊÓÆ÷
-class KeyMonitor extends KeyAdapter {
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        //·µ»Ø¼üÖµ
-        int key = e.getKeyCode();
+            Graphics gImage= offScreenImage.getGraphics();
+     
+            g.setColor(Color.gray);
+       
+            g.fillRect(0, 0, width, height);
         
-		switch (key){
-            case KeyEvent.VK_1:
+            g.setColor(Color.BLUE);
+        
+           g.setFont(new Font("ä»¿å®‹",Font.BOLD,50));
+        
+        if(state == 0) {
+        
+        	g.drawString("é€‰æ‹©æ¸¸æˆæ¨¡å¼",220,100);
+        	g.drawString("å•äººæ¨¡å¼",220,200);
+        	g.drawString("åŒäººæ¨¡å¼",220,300);
+        	g.drawString("1 2é€‰æ‹©æ¨¡å¼ï¼Œenterè¿›å…¥æ¸¸æˆ",0,400);
+        	g.drawImage(select,160,y,null);
+    }
+        
+        else if(state == 1||state == 2){
+            
+        	g.drawString("æ¸¸æˆå¼€å§‹",220,300);
+            if(state == 1){
+            	g.drawString("å•äººæ¨¡å¼",220,200);
+            }
+            else{
+            	g.drawString("åŒäººæ¨¡å¼",220,200);
             	
-            	    a = 1;
-                    y = 150;
-            	
-      
-                System.out.println(state);
-                break;
-            case KeyEvent.VK_2:
-            	
-            	    a = 2;
-                    y = 250;
-            	
-                System.out.println(state);
-                break;
-            case KeyEvent.VK_ENTER:
-            	state = a;
-                start = true;
-                System.out.println("state:"+""+state);
-                break;
-            default:
-                break;
+            }
+            }
         }
     }
-}
- 
-    public static void main(String[] args) {
-    	 GamePanel gamePanel = new GamePanel();
-         gamePanel.launch();
-      }
+    
+    class KeyMonitor extends KeyAdapter {
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+        	int key = e.getKeyCode();
+            switch (key){
+                case KeyEvent.VK_1:                 
+                        
+                        a = 1;
+                        y = 150;
+                    break;
+                case KeyEvent.VK_2:
+                	
+                	a = 2;
+                	y = 250;
+                	break;
+                case KeyEvent.VK_ENTER:
+                	state = a;
+                	break;
+   
+           
+            }
+        }
     }
+   
+    
+    public static void main(String[] args) {
+        GamePanel gamePanel = new GamePanel();
+        gamePanel.launch();
+    }
+}
