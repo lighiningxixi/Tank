@@ -1,10 +1,10 @@
-package ck;
+package giao;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.security.PublicKey;
 
 public class PlayerOne extends Tank {
+
     private boolean up = false;
     private boolean left = false;
     private boolean right = false;
@@ -29,9 +29,6 @@ public class PlayerOne extends Tank {
             case KeyEvent.VK_W:
                 up = true;
                 break;
-            case KeyEvent.VK_SPACE:
-                this.attack();
-                break;
             default:
                 break;
         }
@@ -51,6 +48,9 @@ public class PlayerOne extends Tank {
                 break;
             case KeyEvent.VK_W:
                 up = false;
+                break;
+            case KeyEvent.VK_SPACE:
+                this.attack();
                 break;
             default:
                 break;
