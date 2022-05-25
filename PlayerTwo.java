@@ -2,34 +2,33 @@ package tankwar;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.security.PublicKey;
 
-public class PlayerOne extends Tank {
+public class PlayerTwo extends Tank {
     private boolean up = false;
     private boolean left = false;
     private boolean right = false;
     private boolean down = false;
 
-    public PlayerOne(String img, int x, int y, String upImage, String downImage, String leftImage, String rightImage, GamePanel gamePanel){
+    public PlayerTwo(String img, int x, int y, String upImage, String downImage, String leftImage, String rightImage, GamePanel gamePanel){
         super(img, x, y, upImage, downImage, leftImage, rightImage, gamePanel);
     }
 
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
         switch (key){
-            case KeyEvent.VK_A:
+            case KeyEvent.VK_LEFT:
                 left = true;
                 break;
-            case KeyEvent.VK_S:
+            case KeyEvent.VK_DOWN:
                 down = true;
                 break;
-            case KeyEvent.VK_D:
+            case KeyEvent.VK_RIGHT:
                 right = true;
                 break;
-            case KeyEvent.VK_W:
+            case KeyEvent.VK_UP:
                 up = true;
                 break;
-            case KeyEvent.VK_SPACE:
+            case KeyEvent.VK_K:
                 this.attack();
                 break;
             default:
@@ -40,16 +39,16 @@ public class PlayerOne extends Tank {
     public void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
         switch (key){
-            case KeyEvent.VK_A:
+            case KeyEvent.VK_LEFT:
                 left = false;
                 break;
-            case KeyEvent.VK_S:
+            case KeyEvent.VK_DOWN:
                 down = false;
                 break;
-            case KeyEvent.VK_D:
+            case KeyEvent.VK_RIGHT:
                 right = false;
                 break;
-            case KeyEvent.VK_W:
+            case KeyEvent.VK_UP:
                 up = false;
                 break;
             default:

@@ -1,4 +1,5 @@
-package ck;
+package tankwar;
+
 import java.awt.*;
 
 public abstract class GameObject {
@@ -19,7 +20,8 @@ public abstract class GameObject {
     Direction direction;
     
     GamePanel gamePanel;
-public GameObject(){}
+
+    public GameObject(){}
     public GameObject(String img, int x, int y, GamePanel gamePanel) {
         this.img = Toolkit.getDefaultToolkit().getImage(img);
         this.x = x;
@@ -73,13 +75,6 @@ public GameObject(){}
 
     public void setSpeed(int speed) {
         this.speed = speed;
-    }
-    public Direction getDirection() {
-        return direction;
-    }
-
-    public void setDirection(Direction direction) {
-        this.direction = direction;
     }
 
     public GamePanel getGamePanel() {
