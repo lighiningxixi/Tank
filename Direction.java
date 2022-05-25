@@ -1,5 +1,6 @@
-package giao;
+package ck;
 
 public enum Direction {
-    UP,LEFT,RIGHT,DOWN
+	UP,LEFT,RIGHT,DOWN
+
 }

@@ -1,16 +1,16 @@
-package giao;
+package ck;
 
 import java.awt.*;
 
 public class Bullet extends GameObject{
-    //长宽
+    //尺寸
     private int width = 10;
     private int height = 10;
     //速度
     private int speed = 7;
     //方向
     Direction direction;
-    //构造函数
+    
     public Bullet(String img, int x, int y, Direction direction,GamePanel gamePanel) {
         super(img, x,  y, gamePanel);
         this.direction = direction;
@@ -34,16 +34,16 @@ public class Bullet extends GameObject{
     }
 
     public void leftward(){
-            x -= speed;
+        x -= speed;
     }
     public void rightward(){
-            x += speed;
+        x += speed;
     }
     public void upward(){
-            y -= speed;
+        y -= speed;
     }
     public void downward(){
-            y += speed;
+        y += speed;
     }
 
     @Override
