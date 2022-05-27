@@ -31,5 +31,6 @@ public class EnemyBullet extends Bullet {
         hitBase();
         hitWall();
         hitTank();
+        hitWall1();
     }
 }

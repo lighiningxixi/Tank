@@ -33,7 +33,7 @@ public class Bot extends Tank{
         }
     }
 
-   
+    //电脑坦克随机方向
     public Direction randomDirection() {
         Random r = new Random();
         int rnum = r.nextInt(4);
@@ -49,14 +49,15 @@ public class Bot extends Tank{
         }
     }
 
-   
+    //只有2%几率攻击
     public void attack() {
         Point p = getHeadPoint();
         Random r = new Random();
         int rnum =r.nextInt(100);
-     
-        if(rnum<4) {
-            EnemyBullet enemyBullet = new EnemyBullet("D:\\Java/images/bullet/bulletYellow.gif",p.x,p.y,direction,gamePanel);
+        //System.out.println("r: "+rnum);
+        if(rnum<2) {
+            System.out.println(rnum);
+            EnemyBullet enemyBullet = new EnemyBullet("images/bullet/aixin.gif",p.x,p.y,direction,gamePanel);
             this.gamePanel.bulletList.add(enemyBullet);
         }
     }
@@ -64,7 +65,7 @@ public class Bot extends Tank{
     @Override
     public void paintSelf(Graphics g) {
         g.drawImage(img,x,y,null);
-        this.go();
+        go();
     }
 
     @Override

@@ -15,7 +15,7 @@ public class Bullet extends GameObject{
     }
 
     public void go(){
-       
+        /**判断移动方向*/
         switch (direction){
             case UP:
                 upward();
@@ -31,7 +31,7 @@ public class Bullet extends GameObject{
                 break;
         }
     }
-    
+    //子弹移动
     public void leftward(){
         x -= speed;
         moveToBorder();
@@ -49,11 +49,11 @@ public class Bullet extends GameObject{
         moveToBorder();
     }
 
-    
+    /**子弹与坦克碰撞检测*/
     public void hitBot(){
         Rectangle next= this.getRec();
         List<Bot> bots = this.gamePanel.botList;
-        
+        //子弹和bot
         for(Bot bot: bots){
             if(bot.getRec().intersects(next)){
                 System.out.println("hit bot");
@@ -88,6 +88,17 @@ public class Bullet extends GameObject{
             }
         }
     }
+    public void hitWall1(){
+        Rectangle next = this.getRec();
+        List<Wall1> wall1s = this.gamePanel.wall1List;
+        for(Wall1 w: wall1s) {
+            if (w.getRec().intersects(next)) {
+            	
+                this.gamePanel.removeList.add(this);
+                break;
+            }
+        }
+    }
 
     public void moveToBorder(){
         if (x < 0||x > this.gamePanel.getWidth()) {
@@ -102,10 +113,11 @@ public class Bullet extends GameObject{
     public void paintSelf(Graphics g) {
         g.drawImage(img, x, y, null);
         go();
-        
+        //碰撞检测
         hitBot();
         hitWall();
         hitBase();
+        hitWall1();
     }
 
     @Override
